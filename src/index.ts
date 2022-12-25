@@ -2,6 +2,10 @@ import fs from 'fs';
 import cron from 'node-cron';
 import { postTweet } from './lib/twitter';
 import { getNextTweet, markAsTweeted } from './lib/firestore';
+import express, { Request, Response } from 'express';
+
+const app = express();
+app.use(express.json());
 
 // this is kinda hacky but whatever
 if (process.env.NODE_ENV === 'production') {
@@ -23,4 +27,13 @@ cron.schedule('* * * * *', async () => {
   }
 });
 
-console.log("😤 let's go");
+// This exists because of Digital Ocean wants a health check endpoint, if not healthy, it pulls down the container
+app.get('/', (req: Request, res: Response) => {
+  console.log('🛎 Root pinged');
+  res.status(200).json({ healthy: true });
+});
+
+const PORT = process.env.PORT || 8080;
+app.listen(PORT, () => {
+  console.log("😤 let's go");
+});
