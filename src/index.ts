@@ -17,3 +17,5 @@ cron.schedule('* * * * *', async () => {
   // await postTweet(tweet);
   // await markAsTweeted(doc);
 });
+
+console.log("😤 let's go");
