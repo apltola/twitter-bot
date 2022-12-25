@@ -8,7 +8,7 @@ const db = new Firestore();
 
 export const getNextTweet = async () => {
   const snapshot = await db
-    .collection('eminemLyrics')
+    .collection(process.env.DB_COLLECTION as string)
     .orderBy('tweetedAt', 'asc')
     .get();
 
@@ -22,7 +22,7 @@ export const markAsTweeted = async (
   doc: QueryDocumentSnapshot<DocumentData>
 ) => {
   await db
-    .collection('eminemLyrics')
+    .collection(process.env.DB_COLLECTION as string)
     .doc(doc.id)
     .set({ tweetedAt: Date.now() }, { merge: true });
 
