@@ -5,6 +5,7 @@ import { getNextTweet, markAsTweeted } from './lib/firestore';
 
 // this is kinda hacky but whatever
 if (process.env.NODE_ENV === 'production') {
+  console.log('Make key_file.json!!!');
   const decodedKeyFile = Buffer.from(
     process.env.KEY_FILE as string,
     'base64'
@@ -13,9 +14,13 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 cron.schedule('* * * * *', async () => {
-  const { tweet, doc } = await getNextTweet();
-  // await postTweet(tweet);
-  // await markAsTweeted(doc);
+  try {
+    const { tweet, doc } = await getNextTweet();
+    // await postTweet(tweet);
+    // await markAsTweeted(doc);
+  } catch (error) {
+    console.log('🥵 crash', error);
+  }
 });
 
 console.log("😤 let's go");
