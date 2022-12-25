@@ -8,7 +8,7 @@ import fs from 'fs';
 export const makeKeyFile = () => {
   if (process.env.NODE_ENV !== 'production') return;
 
-  console.log('Make key_file.json!');
+  console.log('🔐 Make key_file.json');
   const decodedKeyFile = Buffer.from(
     process.env.KEY_FILE as string,
     'base64'

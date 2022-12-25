@@ -17,11 +17,11 @@ cron.schedule('* * * * *', async () => {
     // await postTweet(tweet);
     // await markAsTweeted(doc);
   } catch (error) {
-    console.log('🥵 crash', error);
+    console.log('🥵 Crash', error);
   }
 });
 
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
-  console.log("😤 let's go");
+  console.log("😤 Let's go");
 });

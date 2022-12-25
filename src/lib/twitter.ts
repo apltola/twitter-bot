@@ -50,7 +50,7 @@ export const postTweet = async (text: string) => {
     console.log('✅ Posted tweet', res.data);
     return res.data;
   } catch (error) {
-    console.log('👹 Error', error);
+    console.log('👹 Error while posting tweet', error);
     throw error;
   }
 };
