@@ -13,8 +13,8 @@ export const getNextTweet = async () => {
     .get();
 
   const doc = snapshot.docs[0];
-  const tweet = doc.data().text.replace(/\\n/g, '\n\n') as string;
-  console.log('🗄 Tweet from db', doc.data());
+  const tweet = doc.data().text.replace(/\\n/g, '\n') as string;
+  console.log('🗄 Got next tweet from db', doc.data());
   return { tweet, doc };
 };
 
