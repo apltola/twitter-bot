@@ -11,11 +11,11 @@ app.use(healthCheckRouter);
 
 makeKeyFile();
 
-cron.schedule('* * * * *', async () => {
+cron.schedule('0 8,16,0 * * *', async () => {
   try {
     const { tweet, doc } = await getNextTweet();
-    // await postTweet(tweet);
-    // await markAsTweeted(doc);
+    await postTweet(tweet);
+    await markAsTweeted(doc);
   } catch (error) {
     console.log('🥵 Crash', error);
   }

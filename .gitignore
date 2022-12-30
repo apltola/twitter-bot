@@ -2,3 +2,5 @@ node_modules
 dist
 key_file.json
 .env
+tweets.txt
+testi.js
