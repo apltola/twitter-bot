@@ -4,12 +4,12 @@ const db = new Firestore();
 
 const dataToUpload = [
   {
-    text: ``,
+    text: '',
     tweetedAt: null,
   },
 ];
 
-async function upload() {
+async function push() {
   const promises = dataToUpload.map((d) => {
     if (!d.text) return null;
     return db
@@ -22,4 +22,4 @@ async function upload() {
   console.log('All done');
 }
 
-upload();
+push();

@@ -15,7 +15,8 @@
     "build": "npm-run-all clean tsc",
     "test": "jest src/**/* --no-cache --run-in-band",
     "test:ci": "jest src/**/* --ci",
-    "upload": "GOOGLE_APPLICATION_CREDENTIALS=./key_file.json ts-node -r dotenv/config src/lib/firestore/upload.ts"
+    "push": "GOOGLE_APPLICATION_CREDENTIALS=./key_file.json ts-node -r dotenv/config src/lib/firestore/push.ts",
+    "pull": "GOOGLE_APPLICATION_CREDENTIALS=./key_file.json ts-node -r dotenv/config src/lib/firestore/pull.ts"
   },
   "keywords": [],
   "author": "",
